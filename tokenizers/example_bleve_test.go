@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/blevesearch/bleve"
+	_ "github.com/blevesearch/bleve/analysis/analyzer/custom"
 	_ "github.com/wangbin/jiebago/tokenizers"
 )
 
@@ -92,7 +93,7 @@ func Example_beleveSearch() {
 			for fragmentField, fragments := range hit.Fragments {
 				rv += fmt.Sprintf("%s: ", fragmentField)
 				for _, fragment := range fragments {
-					rv += fmt.Sprintf("%s", fragment)
+					rv += fmt.Sprintf("%v", fragment)
 				}
 			}
 			fmt.Printf("%s\n", rv)

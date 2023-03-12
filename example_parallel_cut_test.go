@@ -26,10 +26,7 @@ var (
 
 func worker() {
 	for l := range task {
-		var segments []string
-		for segment := range segmenter.Cut(l.text, true) {
-			segments = append(segments, segment)
-		}
+		var segments = segmenter.Cut(l.text, true)
 
 		l.text = fmt.Sprintf("%s\n", strings.Join(segments, " / "))
 		result <- l
